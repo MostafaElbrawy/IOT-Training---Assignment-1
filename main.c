@@ -2,51 +2,44 @@
 #include <math.h>
 #include <stdbool.h>
 
-bool isPerfectSquare(int);
-int reverseDigits(int);
-int calculateSum(int);
+double calculateCostPerInch(double, double);
 
 int main()
 {
 
-    int num;
+     double d1, p1, d2, p2;
 
-    scanf("%d", &num);
+    printf("Enter diameter and price of pizza 1: ");
+    scanf("%lf %lf", &d1, &p1);
 
-    printf("Is perfect square? %s\n", isPerfectSquare(num) ? "Yes" : "No");
-    printf("Reversed digits: %d\n", reverseDigits(num));
-    printf("Sum of digits: %d\n", calculateSum(num));
+    printf("Enter diameter and price of pizza 2: ");
+    scanf("%lf %lf", &d2, &p2);
+
+    double cost1 = calculateCostPerInch(d1, p1);
+    double cost2 = calculateCostPerInch(d2, p2);
+
+    printf("\nCost per sq.inch:\n");
+    printf("Pizza 1: %.4f\n", cost1);
+    printf("Pizza 2: %.4f\n", cost2);
+
+    if (fabs(cost1 - cost2) < 1e-6) {
+        printf("Both pizzas are the same value.\n");
+    } else if (cost1 < cost2) {
+        printf("Pizza 1 is the better buy.\n");
+    } else {
+        printf("Pizza 2 is the better buy.\n");
+    }
+
 
     return 0;
 }
 
-bool isPerfectSquare(int n) {
+double calculateCostPerInch(double diameter, double price) {
 
-    if (n < 0) return false;
+    double PI = 3.14159;
 
-    for (int i = 1; i * i <= n; i++) {
-        if (i * i == n)
-            return true;
-    }
-
-    return false;
-}
-
-int reverseDigits(int num) {
-    int r = 0;
-    while (num != 0) {
-        r = r * 10 + num % 10;
-        num /= 10;
-    }
-    return r;
-}
-
-int calculateSum(int num) {
-    int s = 0;
-    while (num != 0) {
-        s += num % 10;
-        num /= 10;
-    }
-    return s;
+    double radius = diameter / 2.0;
+    double area = PI * radius * radius;
+    return price / area;
 }
 
