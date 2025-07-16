@@ -1,0 +1,94 @@
+1- An array in C is a fixed-size collection of similar data items stored in contiguous memory locations
+-> Main characteristics
+-Collection of Same Data Type
+-Contiguous Memory Allocation
+-Fixed Size
+-Indexing
+-Multi-dimensional Array
+-> Uses
+-Storing and accessing data
+-Searching
+-Matrices
+-Implementing other data structures
+Ref: https://www.geeksforgeeks.org/c/c-arrays/, https://www.tutorialspoint.com/cprogramming/c_arrays.htm
+
+
+
+2-
+-In memory, arrays are stored in contiguous locations.
+-Each element is stored in adjacent memory locations.
+-The memory representation of an array is like a long tape of bytes, with each element taking up a certain number of bytes.
+
+
+Ref: https://medium.com/@pujari.thanmayee/arrays-and-memory-representation-96c07332916f
+
+3-
+Full Initialization:     int arr[5] = {2, 4, 8, 12, 16};
+Partial Initialization : int arr[5] = {2, 4, 8} -> The remaining elements will be assigned the value 0 (or equivalent according to the type)
+
+Ref: https://www.geeksforgeeks.org/c/c-arrays/
+
+4-
+-int n = sizeof(arr) / sizeof(arr[0]);
+-The sizeof operator only returns the size of the pointer, not the memory block size.
+
+Ref: https://www.geeksforgeeks.org/c/c-arrays/
+
+5-
+If, we use an array index which is out of bounds, then the compiler will compile and even run. But, there is no guarantee for the correct result.
+-> Consequences:
+-Undefined behavior.
+-May read/write garbage memory.
+
+Why? C doesn't perform bounds checking at runtime.
+
+Ref: https://www.tutorialspoint.com/what-is-out-of-bounds-index-in-an-array-c-language#:~:text=Suppose%20you%20have%20an%20array,an%20index%20out%20of%20bounds.
+
+6-
+1D Array: Just a sequence of elements
+int a[5] = {2, 4, 8, 12, 16};
+Use case: Lists, scores, names, simple sequences.
+
+2D Array: more like table of elements with rows and columns
+int b[2][3] = {{1,4,2},{3,6,8}};
+Use case: Matrices, tables, grids.
+
+
+Ref: https://www.w3schools.com/c/c_arrays_multi.php
+
+
+7-
+arrays are always passed to function as pointers.
+int arr[3] = {1,2,3};
+ChangeArray(arr);
+when we pass array like that it is actually pass the address of the array not a copy of it so any change of array in function affects the original one due to change in same location in memory;
+
+
+Ref: https://www.geeksforgeeks.org/cpp/how-arrays-are-passed-to-functions-in-cc/
+
+8-
+actually name of array is treated as a pointer to first element in array with address of first element address, so here we can assign pointer to first element in array an loop over it.
+
+int arr[4] = {25, 50, 75, 100};
+int *ptr = arr;
+for (int i = 0; i < 4; i++) {
+  printf("%d\n", *(ptr + i));
+}
+
+Ref: https://www.w3schools.com/c/c_pointers_arrays.php
+
+9-
+-Fixed size, we overcome this using dynamic arrays or vectors (in c++ for example)
+-array is homogeneous, meaning all elements must be the same type, we can overcome this with structures.
+-Array is Contiguous blocks of memory, we can overcome this with linked lists. Using pointers in linked lists make it allocate any location of memory for any elements with pointer with this this address.
+
+Ref: https://www.geeksforgeeks.org/c/advantages-and-disadvantages-of-array-in-c/
+
+10-
+In C, an enumeration (or enum) is a user defined data type that contains a set of named integer constants. It is used to assign meaningful names to integer values, which makes a program easy to read and maintain.
+Example:
+enum days-of-week { Sun,Mon,Tue,Wed,Thu,Fri,Sat };
+
+
+
+Ref: https://www.geeksforgeeks.org/c/enumeration-enum-c/
