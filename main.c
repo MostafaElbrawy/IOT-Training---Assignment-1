@@ -2,44 +2,32 @@
 #include <math.h>
 #include <stdbool.h>
 
-double calculateCostPerInch(double, double);
+bool isPalindrome(char str[]);
 
 int main()
 {
 
-     double d1, p1, d2, p2;
+    char str[] = "";
 
-    printf("Enter diameter and price of pizza 1: ");
-    scanf("%lf %lf", &d1, &p1);
+    scanf("%sa", str);
 
-    printf("Enter diameter and price of pizza 2: ");
-    scanf("%lf %lf", &d2, &p2);
-
-    double cost1 = calculateCostPerInch(d1, p1);
-    double cost2 = calculateCostPerInch(d2, p2);
-
-    printf("\nCost per sq.inch:\n");
-    printf("Pizza 1: %.4f\n", cost1);
-    printf("Pizza 2: %.4f\n", cost2);
-
-    if (fabs(cost1 - cost2) < 1e-6) {
-        printf("Both pizzas are the same value.\n");
-    } else if (cost1 < cost2) {
-        printf("Pizza 1 is the better buy.\n");
-    } else {
-        printf("Pizza 2 is the better buy.\n");
-    }
-
+    printf("%s" ,isPalindrome(str)? "Palindrome" : "not Plindrome");
 
     return 0;
 }
 
-double calculateCostPerInch(double diameter, double price) {
+bool isPalindrome(char str[]) {
 
-    double PI = 3.14159;
+    int i = 0;
+    int j = strlen(str) - 1;
 
-    double radius = diameter / 2.0;
-    double area = PI * radius * radius;
-    return price / area;
+    while (i < j) {
+        if (str[i] != str[j]) {
+            return false;
+        }
+        i++;
+        j--;
+    }
+    return true;
 }
 
